@@ -1,15 +1,13 @@
 # asdf-jq
 
-[![ci](https://github.com/lsanwick/asdf-jq/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/lsanwick/asdf-jq/actions/workflows/ci.yml)
-
-[jq](https://jqlang.github.io/jq/) plugin for the [asdf](https://github.com/asdf-vm/asdf) version manager.
+[jq](https://jqlang.github.io/jq/) plugin for the [mise](https://github.com/jdx/mise) polyglot tool version manager.
 
 ## Install
 
-```
-asdf plugin-add jq https://github.com/lsanwick/asdf-jq.git
+```bash
+mise plugins install jq https://github.com/mise-plugins/asdf-jq.git
 ```
 
 ## Use
 
-Check out the [asdf](https://github.com/asdf-vm/asdf) readme for instructions on how to install and manage versions of jq.
+Check out the [mise](https://mise.jdx.dev/) documentation for instructions on how to install and manage versions of jq.
