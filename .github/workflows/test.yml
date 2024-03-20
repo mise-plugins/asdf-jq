@@ -1,0 +1,37 @@
+name: test
+on:
+  pull_request:
+    branches: ["master"]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jdx/mise-action@v2
+        with:
+          install: true
+          cache: true
+          experimental: true
+      - run: mise run lint 
+  plugin_test:
+    strategy:
+      matrix:
+        os: [macos-14, macos-12, ubuntu-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Silencing git over hex tag names
+        run: "git config --global advice.objectNameWarning false"
+      - name: Running asdf's plugin-test
+        uses: asdf-vm/actions/plugin-test@v3
+        with:
+          command: jq --version
+          git_repo: ${{ github.repository }}
+          git_ref: ${{ github.sha }}
