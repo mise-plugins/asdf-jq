@@ -121,8 +121,9 @@ function install {
     echo "WARNING: sha256sum not found, skipping checksum verification"
   fi
 
-  mv "$tmp_download_dir/$binary" "$install_path/jq"
-  chmod +x "$install_path/jq"
+  mkdir -p "$install_path/bin"
+  mv "$tmp_download_dir/$binary" "$install_path/bin/jq"
+  chmod +x "$install_path/bin/jq"
   echo "INFO: successfully installed jq version ${version}"
 }
 
